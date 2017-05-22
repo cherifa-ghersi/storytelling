@@ -9,18 +9,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {XHRBackend, Http, RequestOptions} from '@angular/http';
 import {SearchComponent} from './components/search/search.component';
 // SLIDES COMPONENTS
-import { SlidesPresentationComponent, 
-    FullScreenGraphSlideComponent,
-    TitleSlideComponent,
-    GraphTextSlideComponent,
-    TextSlideComponent,
-    SlidesListComponent, 
-    SlidesCreatorComponent, 
-    SlideCreatorComponent 
-} from '.';
-
+import { SlidesPresentationComponent, SlidesListComponent, SlidesCreatorComponent, SlideCreatorComponent } from '.';
 // SLIDES SERVICES
-import {SlidesService,ValidService, ChartsService} from '.';
+import {SlidesService,ValidService} from '.';
 
 // SLIDES ROUTES MODULE
 import { SlidesRoutingModule } from '.';
@@ -36,7 +27,6 @@ import {DragulaModule} from 'ng2-dragula';
 import { BarChartComponent } from '../charts';
 import { ForceDirectedGraphComponent } from '../charts/force-directed-graph/force-directed-graph.component';
 import { LineChartComponent } from '../charts/line-chart/line-chart.component';
-import { TreemapChartComponent } from '../charts/treemap-chart/treemap-chart.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 
 
@@ -65,7 +55,6 @@ import { SlidesManagerComponent } from './components/slides-manager/slides-manag
         FroalaViewModule.forRoot(),
         FileUploadModule
     ],
-    entryComponents: [BarChartComponent, LineChartComponent, ForceDirectedGraphComponent,TreemapChartComponent, FullScreenGraphSlideComponent],
     declarations: [
         ScrollDirective,
         SlidesPresentationComponent,
@@ -78,16 +67,11 @@ import { SlidesManagerComponent } from './components/slides-manager/slides-manag
         BarChartComponent,
         ForceDirectedGraphComponent,
         LineChartComponent,
-        TreemapChartComponent,
         SlidesEditorComponent,
         SlidesSettingComponent,
         EditorComponent,
         FilterComponent,
         SlidesManagerComponent,
-        FullScreenGraphSlideComponent,
-        TitleSlideComponent,
-        GraphTextSlideComponent,
-        TextSlideComponent,
     ],
     exports:[
       FilterComponent,
@@ -95,7 +79,7 @@ import { SlidesManagerComponent } from './components/slides-manager/slides-manag
       SearchComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [OverlayContainer, SlidesService, ChartsService]
+    providers: [OverlayContainer, SlidesService]
 
 })
 export class SlidesModule {

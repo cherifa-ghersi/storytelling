@@ -21,7 +21,7 @@ exports.invokeRolesPolicies = function() {
       resources: '/api/images',
       permissions: ['*']
     }, {
-      resources: '/api/images/:imageByID',
+      resources: '/api/images/:imageId',
       permissions: '*'
     }]
   }, {
@@ -30,7 +30,7 @@ exports.invokeRolesPolicies = function() {
       resources: '/api/images',
       permissions: ['*']
     }, {
-      resources: '/api/images/:imageByID',
+      resources: '/api/images/:imageId',
       permissions: ['*']
     }]
   }, {
@@ -39,7 +39,7 @@ exports.invokeRolesPolicies = function() {
       resources: '/api/images',
       permissions: ['*']
     }, {
-      resources: '/api/images/:imageByID',
+      resources: '/api/images/:imageId',
       permissions: ['*']
     }]
   }]);
