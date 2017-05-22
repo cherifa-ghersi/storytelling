@@ -1,1 +1,0 @@
-export * from './full-screen-graph-slide.component';
