@@ -234,9 +234,7 @@ $color-text-lighter: #fff;
   }
 }
 
-:host {
-  * .visible {
+:host /deep/ .visible {
     overflow-y: auto;
     max-height: 400px;
-  }
 }
