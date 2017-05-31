@@ -29,17 +29,15 @@ const defaultOptions = {
 @Component({
   selector: 'app-ng-graph',
   templateUrl: './ng-graph.component.html',
-  styleUrls: ['./ng-graph.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./ng-graph.component.scss']
 })
 export class NgGraphComponent implements OnInit, Chart {
   
   private chartOptions: any;
   private data: any[];
-  private activated: boolean = false;
+  private activated: boolean = true;
 
-
-  constructor(private ref: ChangeDetectorRef) { }
+  constructor() { }
 
   ngOnInit() {
     this.chartOptions = {...defaultOptions};
@@ -57,14 +55,12 @@ export class NgGraphComponent implements OnInit, Chart {
   }
 
   load() {
-    this.activated = false;
-    this.activated = true; 
-    this.ref.markForCheck();
+    let tmpData= this.data;
+    this.data = [];
+    setInterval(()=> this.data = Object.assign(tmpData));
   }
 
   ease() {
-    this.activated = false;
-    this.ref.markForCheck();
   }
 
   select(data) {

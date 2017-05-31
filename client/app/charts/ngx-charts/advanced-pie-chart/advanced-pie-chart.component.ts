@@ -13,7 +13,7 @@ export class AdvancedPieChartComponent implements OnInit, Chart {
   private height: number;
 
   view: any[];
-  activated: boolean = false;
+  activated: boolean = true;
 
   colorScheme: any;
   gradient = false;
@@ -52,13 +52,14 @@ export class AdvancedPieChartComponent implements OnInit, Chart {
 
 
   load() {
-    this.activated = false;
-    setTimeout(()=> this.activated = true, 300);
+    let tmpData = this.data;
+    this.data = [];
+    setTimeout(()=> this.data = tmpData, 300);
   }
 
 
   ease() {
-    this.activated = false;
+    // this.activated = false;
   }
 
   select(data) {

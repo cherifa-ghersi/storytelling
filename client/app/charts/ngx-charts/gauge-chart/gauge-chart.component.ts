@@ -83,13 +83,14 @@ export class GaugeChartComponent implements OnInit, Chart {
   }
 
   load() {
-    this.activated = false;
-    setTimeout(()=> this.activated = true, 300);
+    let tmpData = this.data;
+    this.data = [];
+    setInterval(()=> this.data = Object.assign(tmpData));
   }
 
 
   ease() {
-    this.activated = false;
+    // this.activated = false;
   }
 
   select(data) {
