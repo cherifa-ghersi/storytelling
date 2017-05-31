@@ -8,8 +8,8 @@ import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-a
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // NGX-CHARTS MODULE
-import { NgxChartsModule } from "@swimlane/ngx-charts";
-import { NgxUIModule } from "@swimlane/ngx-ui";
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxUIModule } from '@swimlane/ngx-ui';
 
 import {SearchComponent} from './components/search/search.component';
 // SLIDES COMPONENTS
@@ -23,12 +23,13 @@ import { SlidesPresentationComponent,
 } from '.';
 
 // SLIDES SERVICES
-import {SlidesService,ValidService, ChartsService} from '.';
+import {SlidesService, ValidService, ChartsService} from '.';
 
 // SLIDES ROUTES MODULE
 import { SlidesRoutingModule } from '.';
-import { CoreModule } from "app/core";
+import { CoreModule } from 'app/core';
 import { FileUploadModule } from 'ng2-file-upload';
+import { PieChartComponent } from '../charts/pie-chart/pie-chart.component';
 
 
 import { ScrollDirective } from './components/slides-presentation/scroll.directive';
@@ -42,6 +43,7 @@ import { ForceDirectedGraphComponent } from '../charts';
 import { LineChartComponent } from '../charts';
 import { TreemapChartComponent } from '../charts';
 import { BarVertical2dComponent } from '../charts/ngx-charts/bar-vertical-2d/bar-vertical-2d.component';
+import { SunburstChartComponent } from '../charts/sunburst-chart/sunburst-chart.component';
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 
@@ -75,7 +77,18 @@ import { ChartsBuilderComponent } from './components/editor/charts-builder';
         FroalaViewModule.forRoot(),
         FileUploadModule
     ],
-    entryComponents: [BarChartComponent, LineChartComponent, ForceDirectedGraphComponent,TreemapChartComponent, FullScreenGraphSlideComponent, GaugeChartComponent, AdvancedPieChartComponent, NgGraphComponent, BarVertical2dComponent],
+    entryComponents: [
+        BarChartComponent,
+        LineChartComponent,
+        ForceDirectedGraphComponent,
+        TreemapChartComponent,
+        SunburstChartComponent,
+        PieChartComponent,
+        FullScreenGraphSlideComponent,
+        GaugeChartComponent,
+        AdvancedPieChartComponent, 
+        NgGraphComponent, 
+        BarVertical2dComponent],
     declarations: [
         ScrollDirective,
         SlidesPresentationComponent,
@@ -89,6 +102,7 @@ import { ChartsBuilderComponent } from './components/editor/charts-builder';
         LineChartComponent,
         TreemapChartComponent,
         BarVertical2dComponent,
+        SunburstChartComponent,
         SlidesEditorComponent,
         SlidesSettingComponent,
         EditorComponent,
@@ -101,6 +115,7 @@ import { ChartsBuilderComponent } from './components/editor/charts-builder';
         TitleSlideComponent,
         GraphTextSlideComponent,
         TextSlideComponent,
+        PieChartComponent,
         SlidesCardComponent,
         ChartsBuilderComponent,
     ],
