@@ -6,13 +6,10 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule, OverlayContainer, TooltipPosition } from '@angular/material';
 import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {XHRBackend, Http, RequestOptions} from '@angular/http';
 
 // NGX-CHARTS MODULE
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { NgxUIModule } from "@swimlane/ngx-ui";
-
-
 
 import {SearchComponent} from './components/search/search.component';
 // SLIDES COMPONENTS
@@ -34,17 +31,18 @@ import { CoreModule } from "app/core";
 import { FileUploadModule } from 'ng2-file-upload';
 
 
-
-
 import { ScrollDirective } from './components/slides-presentation/scroll.directive';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
 import {DragulaModule} from 'ng2-dragula';
 import { BarChartComponent } from '../charts';
 import { GaugeChartComponent } from "../charts";
 import { AdvancedPieChartComponent } from "../charts";
-import { ForceDirectedGraphComponent } from '../charts/force-directed-graph/force-directed-graph.component';
-import { LineChartComponent } from '../charts/line-chart/line-chart.component';
-import { TreemapChartComponent } from '../charts/treemap-chart/treemap-chart.component';
+import { NgGraphComponent } from "../charts";
+import { ForceDirectedGraphComponent } from '../charts';
+import { LineChartComponent } from '../charts';
+import { TreemapChartComponent } from '../charts';
+import { BarVertical2dComponent } from '../charts/ngx-charts/bar-vertical-2d/bar-vertical-2d.component';
+
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 
 
@@ -58,7 +56,7 @@ import { EditorComponent } from './components/editor/editor.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { SlidesManagerComponent } from './components/slides-manager/slides-manager.component';
 import { SlidesCardComponent } from './components/slides-card/slides-card.component';
-
+import { ChartsBuilderComponent } from './components/editor/charts-builder';
 
 
 @NgModule({
@@ -77,7 +75,7 @@ import { SlidesCardComponent } from './components/slides-card/slides-card.compon
         FroalaViewModule.forRoot(),
         FileUploadModule
     ],
-    entryComponents: [BarChartComponent, LineChartComponent, ForceDirectedGraphComponent,TreemapChartComponent, FullScreenGraphSlideComponent, GaugeChartComponent, AdvancedPieChartComponent],
+    entryComponents: [BarChartComponent, LineChartComponent, ForceDirectedGraphComponent,TreemapChartComponent, FullScreenGraphSlideComponent, GaugeChartComponent, AdvancedPieChartComponent, NgGraphComponent, BarVertical2dComponent],
     declarations: [
         ScrollDirective,
         SlidesPresentationComponent,
@@ -90,6 +88,7 @@ import { SlidesCardComponent } from './components/slides-card/slides-card.compon
         ForceDirectedGraphComponent,
         LineChartComponent,
         TreemapChartComponent,
+        BarVertical2dComponent,
         SlidesEditorComponent,
         SlidesSettingComponent,
         EditorComponent,
@@ -98,10 +97,12 @@ import { SlidesCardComponent } from './components/slides-card/slides-card.compon
         FullScreenGraphSlideComponent,
         GaugeChartComponent,
         AdvancedPieChartComponent,
+        NgGraphComponent,
         TitleSlideComponent,
         GraphTextSlideComponent,
         TextSlideComponent,
         SlidesCardComponent,
+        ChartsBuilderComponent,
     ],
     exports:[
       FilterComponent,

@@ -4,11 +4,12 @@ import { colorSets } from '@swimlane/ngx-charts/release/utils/color-sets';
 import * as shape from 'd3-shape';
 
 @Component({
-  selector: 'app-gauge-chart',
-  templateUrl: './gauge-chart.component.html',
-  styleUrls: ['./gauge-chart.component.scss']
+  selector: 'app-bar-vertical-2d',
+  templateUrl: './bar-vertical-2d.component.html',
+  styleUrls: ['./bar-vertical-2d.component.scss']
 })
-export class GaugeChartComponent implements OnInit, Chart {
+export class BarVertical2dComponent implements OnInit, Chart {
+
   @Input() 
   private data: Array<any> = [];
   
@@ -26,7 +27,7 @@ export class GaugeChartComponent implements OnInit, Chart {
     gaugeTextValue: '',
     gaugeMin: 0,
     gaugeMax: 100,
-    gaugeUnits: 'alertes',
+    gaugeUnits: null,
     gaugeAngleSpan: 240,
     gaugeStartAngle: -120,
     gaugeShowAxis: true,
@@ -70,11 +71,10 @@ export class GaugeChartComponent implements OnInit, Chart {
     }
   }
 
-  setData(data) {
-    this.chartOptions.gaugeUnits = data[0].unit;
-    this.data =  data[0].results;
+  setData(graphData, graphConfig) {
+    this.chartOptions = { ...this.chartOptions, ...graphConfig } ;
+    this.data =  graphData;
   }
-
 
   init() {
     // this.width = 700;

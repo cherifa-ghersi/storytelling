@@ -1,0 +1,21 @@
+<ngx-charts-bar-vertical-2d
+  *ngIf="activated"
+  class="chart-container"
+  [scheme]="chartOptions.colorScheme"
+  [schemeType]="chartOptions.schemeType"
+  [results]="data"
+  [gradient]="chartOptions.gradient"
+  [xAxis]="chartOptions.showXAxis"
+  [yAxis]="chartOptions.showYAxis"
+  [legend]="chartOptions.showLegend"
+  [legendTitle]="chartOptions.legendTitle"
+  [showXAxisLabel]="chartOptions.showXAxisLabel"
+  [showYAxisLabel]="chartOptions.showYAxisLabel"
+  [tooltipDisabled]="chartOptions.tooltipDisabled"
+  [xAxisLabel]="chartOptions.xAxisLabel"
+  [yAxisLabel]="chartOptions.yAxisLabel"
+  [showGridLines]="chartOptions.showGridLines"
+  xxxbarPadding="chartOptions.barPadding"
+  xxxgroupPadding="chartOptions.groupPadding"
+  [roundDomains]="chartOptions.roundDomains">
+</ngx-charts-bar-vertical-2d>

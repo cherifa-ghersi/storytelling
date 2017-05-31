@@ -24,6 +24,10 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
     form: FormGroup;
     graphs: Array<any> = [
         {
+            value: "ngGraph",
+            type: "Graph builder"
+        },
+        {
             value: "barChart",
             type: "Bar Chart"
         }, {
@@ -135,7 +139,7 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
     confirmSlide() {
         /* to decide which data to take from tab*/
 
-        if (this.slide.hasGraph && !(this.form.value.slideGraph == 'noGraph' || this.form.value.slideGraph == 'image')) {
+        if (this.slide.hasGraph && !(this.form.value.slideGraph == 'noGraph' || this.form.value.slideGraph == 'image' || this.form.value.slideGraph == 'ngGraph')) {
             switch (this.dataInputTab.selectedIndex) {
                 // default data
                 case 0: {
@@ -172,7 +176,7 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
 
                     break;
                 }
-                default: this.slide.data = '';
+                default: return;
             }
         }
         if (this.slide.hasGraph)
@@ -193,6 +197,14 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
         this.form = this._buildForm();
 
     }
+
+    confirmeSlideGRaphConfig(data) {
+        this.slide.data = data.data;
+        this.slide.config = data.chartOptions;
+    }
+
+
+
     deleteSlide(e) {
         this.deleteSlideOpt.emit(this.slideIndex);
     }
@@ -301,7 +313,7 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
 
-
+    
 }
 
 const ngxSingleChartDataExample = JSON.stringify(single) ;

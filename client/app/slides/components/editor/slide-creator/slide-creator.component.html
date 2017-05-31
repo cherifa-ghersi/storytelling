@@ -29,7 +29,7 @@
           </table>
 
           <div class="margin-ver-frame">
-            <md-tab-group *ngIf="slide.hasGraph &&(form.controls.slideGraph.value)&& !(form.controls.slideGraph.value=='image'||form.controls.slideGraph.value=='noGraph')" [selectedIndex]="curTab" #dataInput>
+            <md-tab-group  *ngIf="slide.hasGraph &&(form.controls.slideGraph.value)&& !(form.controls.slideGraph.value=='image'||form.controls.slideGraph.value=='ngGraph'||form.controls.slideGraph.value=='noGraph')" [selectedIndex]="curTab" #dataInput>
               <md-tab label="Input">
                 <div [ngSwitch]="form.controls.slideGraph.value">
                   <div *ngSwitchCase="'barChart'" class="margin-frame">
@@ -86,6 +86,11 @@
           </div>
           <div class="margin-ver-frame" *ngIf="slide.hasText">
             <textarea [froalaEditor]='editorOptions' [(froalaModel)]="form.value.slideText"></textarea>
+          </div>
+
+          <div *ngIf="form.controls.slideGraph.value == 'ngGraph'">
+            <app-charts-builder (configGraph)="confirmeSlideGRaphConfig($event)">
+            </app-charts-builder>
           </div>
         </div>
       </div>

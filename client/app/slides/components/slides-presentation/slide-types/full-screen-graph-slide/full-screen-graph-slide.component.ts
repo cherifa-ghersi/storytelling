@@ -77,7 +77,7 @@ export class FullScreenGraphSlideComponent implements OnInit, AfterContentInit {
     }
   }
   private initChart() {
-    (<Chart>this.componentRef.instance).setData(this.slide.data);
+    (<Chart>this.componentRef.instance).setData(this.slide.data, this.slide.config);
     (<Chart>this.componentRef.instance).init();
   }
 
