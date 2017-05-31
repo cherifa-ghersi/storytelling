@@ -15,33 +15,9 @@
   [xAxisLabel]="chartOptions.xAxisLabel"
   [yAxisLabel]="chartOptions.yAxisLabel"
   [showGridLines]="chartOptions.showGridLines"
-  [barPadding]="chartOptions.barPadding"
-  [groupPadding]="chartOptions.groupPadding"
+  xxxbarPadding="chartOptions.barPadding"
+  xxxgroupPadding="chartOptions.groupPadding"
   [roundDomains]="chartOptions.roundDomains">
-</ngx-charts-bar-vertical-2d>
-<ngx-charts-bar-vertical-2d
-  *ngIf="chartType === 'bar-vertical-2d'"
-  class="chart-container"
-  [view]="view"
-  [scheme]="colorScheme"
-  [schemeType]="schemeType"
-  [results]="multi"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [legendTitle]="legendTitle"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [tooltipDisabled]="tooltipDisabled"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  (legendLabelClick)="onLegendLabelClick($event)"
-  [showGridLines]="showGridLines"
-  [barPadding]="barPadding"
-  [groupPadding]="groupPadding"
-  [roundDomains]="roundDomains"
-  (select)="select($event)">
 </ngx-charts-bar-vertical-2d>
 <ngx-charts-bar-horizontal-2d
   *ngIf="chartOptions.chartType === 'bar-horizontal-2d' && activated"
