@@ -49,7 +49,7 @@ export class SlidesPresentationComponent implements OnInit {
         /* config of scroll*/
         PageScrollConfig.defaultScrollOffset = 50;
         PageScrollConfig.defaultInterruptible = false;
-        PageScrollConfig.defaultDuration = 800;
+        PageScrollConfig.defaultDuration = 400;
         // PageScrollConfig.defaultEasingLogic = {
         //     ease: (t: number, b: number, c: number, d: number): number => {
         //         // easeInOutExpo easing
