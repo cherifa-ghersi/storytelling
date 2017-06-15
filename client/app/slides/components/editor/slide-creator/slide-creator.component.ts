@@ -22,7 +22,8 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() isInShuffle: boolean;
     slide: Slide = new Slide();
     form: FormGroup;
-
+    slidePreview: any;
+    preview: boolean = false;
     graphs: Array<any>;
     pageLayout: Array<any>;
     titleAlign:Array<string>
@@ -139,6 +140,14 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
         this.csvJson = [];
         this.form = this._buildForm();
 
+    }
+
+    previewSlide() {
+        this.confirmSlide();
+        this.slidePreview = this.slide;
+        console.log('this.slide', this.slide)
+        console.log(this.slidePreview);
+        this.preview = true;
     }
 
     confirmeSlideGRaphConfig(data) {
