@@ -88,8 +88,22 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
         this.showForm = !this.showForm;
     }
     confirmSlide() {
+       this.parseData();
         /* to decide which data to take from tab*/
 
+        console.log('slide 1 confirme: ', this.slide);
+        this.confirmSlideOpt.emit(this.slide);
+        this.slide = new Slide();
+
+        this.csvJson = [];
+        this.form = this._buildForm();
+    }
+    previewSlide() {
+        this.parseData();
+        this.slidePreview = this.slide;
+        this.preview = true;
+    }
+    parseData() {
         if (this.slide.hasGraph && !(this.form.value.slideGraph == 'noGraph' || this.form.value.slideGraph == 'ngGraph' || this.form.value.slideGraph == 'image')) {
             switch (this.dataInputTab.selectedIndex) {
                 //json input
@@ -203,6 +217,7 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
 
     }
     pageLayoutChange() {
+
         switch (this.form.value.pageLayout) {
             case "FullScreenGraph":
                 this.slide.hasGraph = true;

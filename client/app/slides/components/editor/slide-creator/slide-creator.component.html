@@ -4,7 +4,6 @@
     <span class="spacer"></span>
     <span class="error" *ngIf=" !form.valid">Please complete the slide setting</span>
   </md-toolbar>
-  <app-slide-preview *ngIf="(slide && slide.hasGraph && slide.pageLayout) || slide.hasText" [slide] ="slidePreview" class="preview"></app-slide-preview>
 
   <md-card-content *ngIf="showForm">
     <form novalidate [formGroup]="form" (ngSubmit)="f.form.valid" #f="ngForm">
@@ -68,6 +67,9 @@
             </app-charts-builder>
           </div>
         </div>
+      </div>
+      <div class="preview">
+         <app-slide-preview *ngIf="((slide && slide.hasGraph && slide.pageLayout) || slide.hasText)&&preview" [slide] ="slidePreview" ></app-slide-preview>
       </div>
       <br>
       <button md-raised-button type="button" (click)="confirmSlide()" [disabled]="!form.valid||isInShuffle">OK</button>
