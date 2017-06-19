@@ -76,9 +76,9 @@ export class LineChartComponent extends Chart implements OnInit {
             .style("opacity", 0);
 
         let svg = d3.select(element).append('svg')
-            .attr('width', element.offsetWidth)
-            .attr('height', element.offsetHeight)
-            .attr('transform', 'translate(' + 0 + ',' + this.height / 2 + ')');
+            .attr('width', element.offsetWidth + margin.left + margin.right)
+            .attr('height', element.offsetHeight + margin.top + margin.bottom)
+            .attr('transform', 'translate(0,40)');
         console.log(this.height, element.offsetHeight, this.heightTB)
         let value = [];
         this.data.forEach((d) => {
