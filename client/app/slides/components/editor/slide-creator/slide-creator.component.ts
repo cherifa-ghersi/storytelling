@@ -21,6 +21,7 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
     showForm: boolean = true; //indicator for showing slide setting
     @Input() isInShuffle: boolean;
     slide: Slide = new Slide();
+    slideText = this.slide.text;
     form: FormGroup;
     slidePreview: any;
     preview: boolean = false;
@@ -69,6 +70,7 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
         });
         this.graphChanged();
         this.showForm = !this.form.valid;
+        this.slideText = this.slide.text;
     }
     private _buildForm() {
         return this._fb.group({
@@ -135,17 +137,20 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
                 default: this.slide.data = '';
             }
         }
+        console.log(this.slide.text.toString());
         if (this.slide.hasGraph)
             this.slide.graph = this.form.value.slideGraph;
         else this.slide.graph = "";
+        this.slide.text = this.slideText;
+
         this.slide.pageLayout = this.form.value.pageLayout;
         if (!this.slide.hasText)
             this.slide.text = "";
         if (this.slideIndex) {
             this.slide.index = this.slideIndex;
         }
-        this.slide.pageTitle.title=this.form.value.pageTitle;
-        this.slide.pageTitle.align=this.form.value.titleAlign;
+        this.slide.pageTitle.title = this.form.value.pageTitle;
+        this.slide.pageTitle.align = this.form.value.titleAlign;
      }
     confirmeSlideGRaphConfig(data) {
         console.log('data: ', data);
