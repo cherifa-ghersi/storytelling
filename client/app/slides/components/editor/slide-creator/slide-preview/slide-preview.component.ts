@@ -9,12 +9,9 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 })
 export class SlidePreviewComponent implements OnInit {
   @Input () slide : Slide;
-  slideload$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  slideease$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   constructor() { }
 
   ngOnInit() {
-    console.log('init', this.slide);
+    console.log('init');
   }
-
 }

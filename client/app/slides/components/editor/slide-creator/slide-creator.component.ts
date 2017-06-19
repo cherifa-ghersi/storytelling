@@ -66,7 +66,7 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
         this.validService.changeSlideValid(this.form.valid, this.slideIndex);
         this.form.valueChanges.subscribe(data => {
             this.validService.changeSlideValid(this.form.valid, this.slideIndex);
-        })
+        });
         this.graphChanged();
         this.showForm = !this.form.valid;
     }
@@ -111,7 +111,6 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
                     let data;
                     try {
                         data = JSON.parse(this.form.value.graphDataJson);
-                        console.log("data here", this.form.value.graphDataJson);
                         this.slide.data = data.graphData;
                     }
                     catch (e) {
@@ -147,23 +146,7 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
         }
         this.slide.pageTitle.title=this.form.value.pageTitle;
         this.slide.pageTitle.align=this.form.value.titleAlign;
-        console.log('slide 1 confirme: ', this.slide);
-        this.confirmSlideOpt.emit(this.slide);
-        this.slide = new Slide();
-
-        this.csvJson = [];
-        this.form = this._buildForm();
-
-    }
-
-    previewSlide() {
-        this.confirmSlide();
-        this.slidePreview = this.slide;
-        console.log('this.slide', this.slide)
-        console.log(this.slidePreview);
-        this.preview = true;
-    }
-
+     }
     confirmeSlideGRaphConfig(data) {
         console.log('data: ', data);
         this.slide.data = data.data;
@@ -190,6 +173,7 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
         //
         //change json sample
         //**if the slide data is already set
+        this.preview = false;
         if (this.slide.data != undefined) {
             if (this.slide.data.length && this.form.value.slideGraph == this.slide.graph) {
                 //if has data, set tab to json
@@ -217,16 +201,23 @@ export class SlideCreatorComponent implements OnInit, AfterViewInit, OnChanges {
 
     }
     pageLayoutChange() {
-
+        this.preview = false;
         switch (this.form.value.pageLayout) {
             case "FullScreenGraph":
                 this.slide.hasGraph = true;
                 this.slide.hasText = false;
                 break;
-            case "textInCenter": this.slide.hasGraph = false; this.slide.hasText = true; break;
-            case "textInCenterImageBackground": this.slide.hasGraph = true; this.slide.hasText = true; break;
-            case "LeftGraphRightText": this.slide.hasGraph = true; this.slide.hasText = true; break;
-            case "LeftTextRightGraph": this.slide.hasGraph = true; this.slide.hasText = true; break;
+            case "textInCenter":
+                this.slide.hasGraph = false; this.slide.hasText = true; break;
+            case "textInCenterImageBackground":
+                this.slide.hasGraph = true;
+                this.slide.hasText = true; break;
+            case "LeftGraphRightText":
+                this.slide.hasGraph = true;
+                this.slide.hasText = true; break;
+            case "LeftTextRightGraph":
+                this.slide.hasGraph = true;
+                this.slide.hasText = true; break;
             default: ;
         }
     }
