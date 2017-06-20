@@ -60,7 +60,7 @@
 
           </div>
           <div class="margin-ver-frame" *ngIf="slide.hasText">
-            <textarea [froalaEditor]="editorOptions" [(froalaModel)]="slideText"></textarea>
+            <textarea [froalaEditor]="editorOptions" [(froalaModel)]="slideText" ></textarea>
           </div>
           <div *ngIf="form.controls.slideGraph.value == 'ngGraph'">
             <app-charts-builder (configGraph)="confirmeSlideGRaphConfig($event)">
