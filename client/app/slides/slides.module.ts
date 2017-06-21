@@ -71,6 +71,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { FavoriteFilterComponent } from './components/favorite-filter/favorite-filter.component';
 import { ToggleFullscreenDirective } from './components/slides-presentation/toggle-fullscreen.directive';
 import { SlidePreviewComponent } from './components/editor/slide-creator/slide-preview/slide-preview.component';
+import { TrySamplesComponent } from './components/editor/slides-setting/try-samples/try-samples.component';
 
 
 
@@ -106,6 +107,7 @@ import { SlidePreviewComponent } from './components/editor/slide-creator/slide-p
         AdvancedPieChartComponent,
         DialogComponent,
         DendogramComponent,
+        TrySamplesComponent,
         NgGraphComponent],
     declarations: [
         ScrollDirective,
@@ -145,7 +147,8 @@ import { SlidePreviewComponent } from './components/editor/slide-creator/slide-p
         DendogramComponent,
         FavoriteFilterComponent,
         KeySwitchDirective,
-        ToggleFullscreenDirective
+        ToggleFullscreenDirective,
+        TrySamplesComponent
     ],
     exports:[
       FilterComponent,
