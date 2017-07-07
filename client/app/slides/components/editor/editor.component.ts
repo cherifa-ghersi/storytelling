@@ -35,9 +35,11 @@ export class EditorComponent implements OnInit, OnChanges {
             // value[0] will always be bag name
             this.onDrag(value.slice(1));
         });
+
         dragulaService.drop.subscribe((value: any) => {
             console.log(value);
             this.onDrop(value.slice(1));
+
         });
         dragulaService.over.subscribe((value: any) => {
             //console.log(`over: ${value[0]}`);
@@ -86,7 +88,7 @@ export class EditorComponent implements OnInit, OnChanges {
                 if ((i < this.shuffleTransition.drag || i == this.shuffleTransition.drag) && i > this.shuffleTransition.drop) this.shuffleOrder[i]--;
                 if (i == this.shuffleTransition.drop) this.shuffleOrder[i] = this.shuffleTransition.drag;
             }
-        })
+        });
         this.addClass(el, 'ex-moved');
     }
 
@@ -97,6 +99,13 @@ export class EditorComponent implements OnInit, OnChanges {
 
     private onOut(args: any): void {
         let [el] = args;
+        /*Save the slide order*/
+        let slides = Object.assign({}, this.slider.slides);;
+        this.shuffleOrder.forEach((order, i) => {
+            this.slider.slides[i] = slides[order];
+            this.slider.slides[i].index = i + 1;
+        });
+        this.isInShuffle = false;
         this.removeClass(el, 'ex-over');
     }
     private reorder() {
@@ -181,7 +190,7 @@ export class EditorComponent implements OnInit, OnChanges {
                         if (s.index > index - 1)
                             s.index--;
                     }
-                )
+                );
                 this.curSlideIndex--;
                 console.log("slide deleted in local");
             }
@@ -191,6 +200,7 @@ export class EditorComponent implements OnInit, OnChanges {
             console.log("slide cannot be deleted");
         }
     }
+
     /* check creator valid*/
     checkCreator(index): boolean {
         let creator = this._creatorEle.toArray();
@@ -198,31 +208,20 @@ export class EditorComponent implements OnInit, OnChanges {
         console.log(creator);
         creator.forEach(c => {
             if (!c.form.valid&&c.slideIndex!=index) valid = false
-        })
+        });
         return valid;
     }
+
     /*change slide order*/
-    shuffleSlide() {
-        //save new order
-        if (this.isInShuffle) {
-            let slides = Object.assign({}, this.slider.slides);;
-            this.shuffleOrder.forEach((order, i) => {
-                this.slider.slides[i] = slides[order];
-                this.slider.slides[i].index = i + 1;
-            })
-            this.isInShuffle = false;
-        }
+    shuffleSlide(shuffle) {
         //start to shuffle
-        else {
             this.shuffleOrder = [];
             this.slider.slides.forEach((s, i) => {
                 this.shuffleOrder.push(i);
-            })
-
-            this.isInShuffle = true;
-        }
-
+            });
+        this.isInShuffle = true;
     }
+
     /* clear change of shuffle*/
     clearShuffle() {
         this.isInShuffle = false;
