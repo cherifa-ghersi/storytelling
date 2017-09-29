@@ -1,0 +1,58 @@
+
+<md-sidenav-container class="container">
+  <md-sidenav #sidenav mode="side" opened="true" disableClose class="sidenav">
+    <ul>
+      <li>
+        <a (click)="addText()">
+          <md-card>
+            <md-card-content class="card-content">
+              <i class="fa fa-font fa-4x"></i>
+              <i class="fa fa-font fa-1x"></i>
+              <span class="span-card">Text</span>
+            </md-card-content>
+          </md-card>
+        </a>
+      </li>
+      <li>
+        <a (click)="openChartBuilder()">
+          <md-card>
+            <md-card-content class="card-content">
+              <i class="fa fa-area-chart fa-4x"></i>
+              <span class="span-card">Chart</span>
+            </md-card-content>
+          </md-card>
+        </a>
+      </li>
+      <li>
+        <md-card>
+          <md-card-content class="card-content">
+            <i class="fa fa-picture-o fa-4x"></i>
+            <span class="span-card">Picture</span>
+          </md-card-content>
+        </md-card>
+      </li>
+    </ul>
+  </md-sidenav>
+  <md-card class="slide-creator">
+    <div [ngGrid]="gridConfig">
+      <div *ngFor="let box of slide; let i = index" [(ngGridItem)]="box.config" (onItemChange)="updateItem(i, $event)" (onResize)="onResize(i, $event)" (onDrag)="onDrag(i, $event)">
+        <div class="handle"><div class="box-header-btns pull-right">
+          <a title="edit" (click)="editBox(i);">
+            <i class="fa fa-pencil"></i>
+          </a>
+          <a title="Remove widget" (click)="removeBox(i);">
+            <i class="fa fa-trash"></i>
+          </a>
+        </div>
+        </div>
+        <div *ngIf="box.text"  #textContainer [innerHTML]="box.text"></div>
+        <app-graph [width]="box.width" [height]="box.height" *ngIf="box.chart" [chart]="box.chart"></app-graph>
+     </div>
+    </div>
+  </md-card>
+  <div class="action-button">
+    <button md-raised-button color="primary" (click)="confirmSlide(slide)" >SAVE</button>
+    <button md-raised-button (click)="dialogRef.close('CANCEL')">CANCEL</button>
+  </div>
+</md-sidenav-container>
+

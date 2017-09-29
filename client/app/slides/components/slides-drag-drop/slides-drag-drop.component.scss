@@ -1,0 +1,92 @@
+
+.container {
+  height: 100%;
+  .slide-creator {
+    width: 95%;
+    height: 85%;
+    margin: 2%;
+    display: flex;
+  }
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.graph-class {
+  width: 50%;
+  height: 50%;
+}
+.sidenav {
+  padding: 20px;
+  width: 10%;
+  background: transparent;
+
+}
+
+.card-content {
+  padding: 5%;
+  .span-card {
+    padding:25%;
+  }
+}
+ul li {
+  margin-bottom: 5%;
+}
+
+.grid-item {
+  border: solid 1px #ccc;
+}
+
+
+.btn {
+  margin-left: 10px;
+}
+
+.box-header-btns {
+  top: 15px;
+  right: 10px;
+  cursor: pointer;
+  position: absolute;
+}
+
+.navbar-default {
+  background: black;
+  border: 0px;
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+}
+
+body {
+  background-color: #f5f2f2;
+}
+.grid-item {
+  border : none !important;
+  .handle {
+    visibility: hidden !important;
+  }
+  &:focus, &:hover, &:active {
+    border : solid 1px #ccc !important;
+    .handle {
+        width: 100%;
+        visibility: visible !important;
+        height: 50px;
+        background: #eee;
+        color: black;
+        font-weight: 500;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+  }
+
+}
+
+.action-button {
+  margin: 0 auto;
+  width: 30%;
+}

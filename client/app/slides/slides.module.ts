@@ -70,7 +70,6 @@ import { ImageUploadComponent } from './components/slides-editor-form/slides-edi
 import { SlidesSettingComponent } from './components/slides-editor-form/slides-editor/slides-setting/slides-setting.component';
 import { ChartsBuilderComponent, CodeEditorComponent, DataTableComponent } from './components/slides-editor-form/slides-editor/slide-card/slide-editor/charts-builder';
 import { SlidesEditorComponent } from './components/slides-editor-form/slides-editor/slides-editor.component';
-
 import { SlidesListComponent } from './components/slides-list/slides-list.component';
 import { SlidesCardComponent } from './components/slides-list/slides-card/slides-card.component';
 import { DeleteDialogComponent } from './components/slides-list/slides-card/delete-dialog/delete-dialog.component';
@@ -78,6 +77,8 @@ import { ToggleFullscreenDirective } from './components/slides-view/toggle-fulls
 
 import { ValidateOnBlurDirective } from './components/slides-editor-form/slides-editor/slides-setting/validate-on-blur.directive';
 import { SlideEditorComponent } from './components/slides-editor-form/slides-editor/slide-card/slide-editor/slide-editor.component';
+import { SlidesDragDropComponent, ChartBuilderComponent, TextEditorComponent, GraphComponent } from '.';
+import { NgGridModule} from 'angular2-grid';
 
 @NgModule({
     imports: [
@@ -96,7 +97,8 @@ import { SlideEditorComponent } from './components/slides-editor-form/slides-edi
         DndModule.forRoot(),
         HotTableModule,
         FroalaEditorModule.forRoot(),
-        FroalaViewModule.forRoot()
+        FroalaViewModule.forRoot(),
+        NgGridModule
     ],
     entryComponents: [
         BarChartComponent,
@@ -119,7 +121,10 @@ import { SlideEditorComponent } from './components/slides-editor-form/slides-edi
         SunburstChartComponent,
         AreaChartComponent,
         ImageComponent,
-        SlideEditorComponent],
+        SlideEditorComponent,
+        ChartBuilderComponent,
+        TextEditorComponent
+    ],
 
     declarations: [
         KeySwitchDirective,
@@ -162,7 +167,11 @@ import { SlideEditorComponent } from './components/slides-editor-form/slides-edi
         ToggleFullscreenDirective,
         ImageComponent,
         ValidateOnBlurDirective,
-        SlideEditorComponent
+        SlideEditorComponent,
+        SlidesDragDropComponent,
+        ChartBuilderComponent,
+        TextEditorComponent,
+        GraphComponent
     ],
     exports: [
       SlidesCardComponent,
