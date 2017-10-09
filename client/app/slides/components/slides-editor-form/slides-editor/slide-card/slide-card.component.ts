@@ -3,7 +3,7 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 import { Slide } from '../../../../models/slide';
 import {SlideEditorComponent} from './slide-editor/slide-editor.component';
 import { MdDialog } from '@angular/material';
-
+import {SlidesDragDropComponent} from '../../../slides-drag-drop';
 @Component({
     selector: 'app-slide-card',
     templateUrl: './slide-card.component.html',
@@ -42,7 +42,7 @@ export class SlideCardComponent {
     }
 
     creatSlide() {
-        const dialog = this.dialog.open(SlideEditorComponent, {  height: '100%', width : '100%'});
+        const dialog = this.dialog.open(SlidesDragDropComponent, {  height: '100%', width : '100%'});
         dialog.componentInstance.slide = this.slide;
         dialog.componentInstance.slideIndex = this.slideIndex;
 

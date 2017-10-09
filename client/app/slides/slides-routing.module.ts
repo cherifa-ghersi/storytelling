@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 // SLIDES COMPONENTS
 import { SlidesViewComponent, SlidesEditorFormComponent, SlidesListComponent, SlideEditorComponent } from '.';
+import { SlidesDragDropComponent } from '.';
 
 import { AuthGuard } from 'app/users';
 
@@ -32,7 +33,11 @@ const slidesRoutes: Routes = [
     path: 'slidesPresentation/:id',
     component: SlidesViewComponent,
     data: { title: 'Presentation' }
-  },
+  }, {
+    path: ':idSlides/slide/:id',
+    component: SlidesDragDropComponent,
+    data: { title: 'Slide editor' }
+  }
 ];
 
 @NgModule({

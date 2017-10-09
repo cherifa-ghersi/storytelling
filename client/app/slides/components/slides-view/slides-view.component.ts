@@ -10,6 +10,7 @@ import {ImagesService} from '../../services/images.service';
 import { BarChartComponent, ForceDirectedGraphComponent, LineChartComponent, HierarchicalEdgeBundlingComponent} from 'app/charts';
 
 import { PageConfig, HALF_HALF_LAYOUT, FULL_LAYOUT} from './pageConfig';
+import {NgGrid, NgGridItem, NgGridConfig, NgGridItemConfig, NgGridItemEvent} from 'angular2-grid';
 
 import { slideTransition } from "./slide.animation";
 import * as screenfull from 'screenfull';
@@ -43,7 +44,28 @@ export class SlidesViewComponent implements OnInit {
     inEaseProcess = false;
     screenfull: any;
     showFullScreen: boolean = false;
-
+    private gridConfig: NgGridConfig = <NgGridConfig>{
+        'margins': [5],
+        'draggable': false,
+        'resizable': false,
+        'max_rows': 38,
+        'visible_rows': 90,
+        'visible_cols': 90,
+        'min_cols': 1,
+        'min_rows': 1,
+        'col_width': 1,
+        'row_height': 1,
+        'cascade': 'off',
+        'min_width': 1,
+        'min_height': 1,
+        'fix_to_grid': true,
+        'auto_style': true,
+        'auto_resize': true,
+        'maintain_ratio': false,
+        'prefer_new': false,
+        'zoom_on_drag': false,
+        'limit_to_screen': false
+    };
     slideload$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
     slideease$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 

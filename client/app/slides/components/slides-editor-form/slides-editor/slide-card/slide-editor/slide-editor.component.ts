@@ -52,25 +52,16 @@ export class SlideEditorComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if (!this.slide.pageLayout) {
-      this.validService.changeSlideValid(false, this.slideIndex, "LAYOUT");
-    }
-
   }
 
   ngOnChanges(changes) {
     if (changes.hasOwnProperty("slideSetting")) {
       this.slide = this.slideSetting;
-      this.slide.isValid = this.slide.pageLayout && this.isChartBuilderValid;
-      this.validService.changeSlideValid(this.slide.pageLayout && this.isChartBuilderValid, this.slideIndex);
     }
   }
 
   private _buildForm() {
     return this._fb.group({
-      pageTitle: new FormControl(this.slide.pageTitle.title, Validators.nullValidator),
-      titleAlign: new FormControl(this.slide.pageTitle.align, Validators.nullValidator),
-      slideText: new FormControl(this.slide.text, Validators.nullValidator)
     });
   }
 
@@ -80,28 +71,9 @@ export class SlideEditorComponent implements OnInit, OnChanges {
   }
   /*confirm the slide setting*/
   confirmSlide(isValid) {
-    if (this.slide.hasGraph) {
-      if (this.dataBuilder.chartOptions.chartType
-          && this.dataBuilder.chartOptions.chartType.cmpName != null) {
-        this.slide.graph = this.dataBuilder.chartOptions.chartType.cmpName;
-      } else {
-        this.slide.graph = 'ngGraph';
-      }
-      this.slide.data = this.dataBuilder.data;
-      this.slide.config = this.dataBuilder.chartOptions;
-      this.slide.slideImage = null;
-    } else {
-      this.slide.graph = 'noGraph';
-      this.slide.data = [];
-    }
-    if (!this.slide.hasText) {
-      this.slide.text = '';
-    }
     if (this.slideIndex) {
       this.slide.index = this.slideIndex;
     }
-    this.slide.pageTitle.title = this.form.value.pageTitle;
-    this.slide.pageTitle.align = this.form.value.titleAlign;
     this.validService.changeSlideValid(true, this.slideIndex);
     this.slide.isValid = true;
     this.dialogRef.close(this.slide);
@@ -114,31 +86,14 @@ export class SlideEditorComponent implements OnInit, OnChanges {
   /*change page layout*/
   pageLayoutChange(value) {
     console.log(value);
-    switch (value) {
-      case 'FullScreenGraph':
-        this.slide.hasGraph = true;
-        this.slide.hasText = false;
-        break;
-      case 'textInCenter': this.slide.hasGraph = false; this.slide.hasText = true; break;
-      case 'textInCenterImageBackground': this.slide.hasGraph = false; this.slide.hasText = true; break;
-      case 'LeftGraphRightText': this.slide.hasGraph = true; this.slide.hasText = true; break;
-      case 'LeftTextRightGraph': this.slide.hasGraph = true; this.slide.hasText = true; break;
-      default: break;
-    }
-    this.slide.pageLayout = value;
   }
   /*change bkg layout*/
   imgLayoutChange(value) {
-    this.slide.bkgLayout = value;
-
   }
   /*change text vertical align*/
   textAlignChange(value) {
-    this.slide.textVerAlign = value;
   }
   /* set image path*/
   setImageHtml(image) {
-    this.slide.slideImage = image;
-
   }
 }
