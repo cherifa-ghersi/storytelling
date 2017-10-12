@@ -30,13 +30,11 @@ export class GraphComponent implements OnInit, AfterContentInit, OnChanges {
   }
   private resolveCmp() {
     let cmpName: string;
-    console.log(this.chart.chartType);
-    if (this.chart.chartType
-        && this.chart.chartType.cmpName != null) {
-      cmpName = this.chart.chartType.cmpName;
+    if (this.chart.chartOptions.chartType
+        && this.chart.chartOptions.chartType.cmpName != null) {
+      cmpName = this.chart.chartOptions.chartType.cmpName;
     }
     let cmpType: string = cmpName.charAt(0).toUpperCase() + cmpName.slice(1) + 'Component';
-    console.log(cmpType);
     this.setChart(cmpType);
   }
 
@@ -47,10 +45,11 @@ export class GraphComponent implements OnInit, AfterContentInit, OnChanges {
       this.componentRef.destroy();
     }
     if (this.chartsService.getChartType(chartType) === undefined) return;
-    let componentFactory = this._componentFactoryResolver.resolveComponentFactory(this.chartsService.getChartType(chartType));
+    const componentFactory = this._componentFactoryResolver.resolveComponentFactory(this.chartsService.getChartType(chartType));
     this.componentRef = this.parent.createComponent(componentFactory);
-    console.log(this.chart.data);
     this.componentRef.instance.dataInput = this.chart.data; // set the input inputData of the abstract class Chart
+    this.componentRef.instance.configInput = this.chart.chartOptions;
+
   }
 
 }

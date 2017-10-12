@@ -1,33 +1,36 @@
-<md-sidenav-container class="container">
-  <md-sidenav #sidenav mode="side" opened="true" disableClose class="sidenav">
+<div class="container">
+  <div #sidenav class="sidenav " [class.toggled]="isToggled | async">
     <div class="sidebar-nav">
-    <div class="head">
-          <a routerLink="">
+      <div class="head">
+        <a routerLink="">
           <div class="logo">
             <i class="fa fa-2x fa-scribd"></i>
             <span>Story Telling</span>
           </div>
+          <!--<a class="right pin-icon" (click)="changePinStatus()" [hidden]="!(isNormalScreen && sideNavLock)"><i class=" fa fa-lock fa-fw"></i></a>
+          <a class="right pin-icon" ng-click="vm.changePinStatus()" [hidden]="!(isNormalScreen && !sideNavLock)"><i class=" fa fa-unlock fa-fw"></i></a>-->
         </a>
       </div>
       <div class="sidebar">
         <ul>
           <li>
             <a (click)="addText()">
-                  <i class="fa fa-font fa-fw"></i>
-                  <i class="fa fa-font fa-fw"></i>
-                  <span class="span-card">Text</span>
+              <i class="fa fa-font fa-fw"></i>
+              <i class="fa fa-font fa-fw"></i>
+              <span class="span-card">Text</span>
             </a>
           </li>
           <li>
             <a (click)="openChartBuilder()">
-                  <i class="fa fa-area-chart fa-fw"></i>
-                  <span class="span-card">Chart</span>
+              <i class="fa fa-area-chart fa-fw"></i>
+              <span class="span-card">Chart</span>
             </a>
           </li>
         </ul>
       </div>
     </div>
-  </md-sidenav>
+  </div>
+
   <div class="extend-toolbar header" [class.toggled]="isToggled | async">
     <div class="top" md-colors="{background: 'background-TOPNAV', color: 'primary-50'}">
       <div class="nav-wrapper">
@@ -39,7 +42,7 @@
   </div>
 <div>
   <div [ngGrid]="gridConfig">
-    <div *ngFor="let box of slide.boxes; let i = index" [(ngGridItem)]="box.config" (onItemChange)="updateItem(i, $event)" (onResize)="onResize(i, $event)" (onDrag)="onDrag(i, $event)">
+    <div *ngFor="let box of slide.boxes; let i = index" [(ngGridItem)]="box.config" (onDragStop)="onDragStop(i,$event, box)" (onResize)="onResize(i, $event)">
       <div class="handle"><div class="box-header-btns pull-right">
         <a title="edit" (click)="editBox(i);">
           <i class="fa fa-pencil"></i>
@@ -58,6 +61,6 @@
     <button md-raised-button color="primary" (click)="confirmSlide(slide)" >SAVE</button>
     <button md-raised-button (click)="dialogRef.close('CANCEL')">CANCEL</button>
   </div>
-</md-sidenav-container>
+</div>
 
 

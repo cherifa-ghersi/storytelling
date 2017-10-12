@@ -2,6 +2,8 @@
 
 .container {
   height: 100%;
+  overflow: hidden;
+
 }
 
 .example-sidenav-content {
@@ -76,7 +78,7 @@ body {
 
 .action-button {
   display: flex;
-  height: 99%;
+  height: 94%;
   align-items: flex-end;
   justify-content: center;
 }
@@ -274,7 +276,7 @@ img.fr-fic.fr-dib {
   margin-right: 30px;
 }
 .mat-sidenav-content {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .sidenav .sidebar .sidebar-nav.navbar-collapse {
@@ -380,7 +382,7 @@ img.fr-fic.fr-dib {
     background: white;
     border-bottom: 1px solid #ddd;
     height: 50px !important;
-    left: 0;
+    left: 60px;
     line-height: 50px !important;
     padding: 0 1.25rem ;
     position: fixed;
@@ -412,4 +414,6 @@ img.fr-fic.fr-dib {
 .grid {
   max-height: 100% !important;
   height: 100% !important;
+  margin-top: 50px;
+  margin-left: 60px;
 }

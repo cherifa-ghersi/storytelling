@@ -38,10 +38,6 @@ export class SlidesViewComponent implements OnInit {
     currentSlide: any;
     slideNum: number;
     charts: Array<any> = [];
-    loadContentAni: Array<boolean> = []; // indicator for content load animation
-    easeContentAni: Array<boolean> = []; // indicator for content ease(fade away) animation
-    pageLayoutConfig: Array<any> = [];
-    inEaseProcess = false;
     screenfull: any;
     showFullScreen: boolean = false;
     private gridConfig: NgGridConfig = <NgGridConfig>{

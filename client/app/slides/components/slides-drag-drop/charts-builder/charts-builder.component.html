@@ -192,8 +192,9 @@
     </md-card-content>
   </md-card>
 </div>
+{{dataDims}}
 <div md-dialog-actions>
-  <button md-button [md-dialog-close]="{'chartType': chartType, 'chartOptions': chartOptions, 'data':data}" tabindex="2">Ok</button>
+  <button md-button [md-dialog-close]="{ data: this.rawData, chartOptions: { chartType: chartType, headerValues: headerValues, dataDims: dataDims }}" tabindex="2">Ok</button>
   <button md-button (click)="close()" tabindex="-1">No Thanks</button>
 </div>
 

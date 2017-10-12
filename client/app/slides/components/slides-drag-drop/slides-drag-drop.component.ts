@@ -44,7 +44,7 @@ export class SlidesDragDropComponent {
   private itemPositions: Array<any> = [];
 
   openChartBuilder() {
-    const dialog = this.dialog.open(ChartBuilderComponent, {  height: '95%', width : '90%'});
+    const dialog = this.dialog.open(ChartBuilderComponent, {height: '95%', width: '90%'});
     dialog.afterClosed().subscribe(result => {
       if (result) {
         console.log('The dialog was closed');
@@ -56,66 +56,71 @@ export class SlidesDragDropComponent {
   constructor(private dialog: MdDialog, public dialogRef: MdDialogRef<SlidesDragDropComponent>) {
   }
 
-  addBox(objectToAdd, type) {
+  refreshBox(index, box) {
+    this.removeBox(index);
+    box = {
+      config : this._generateItemConfig(45, box.config.row, box.config.sizex, box.config.sizey),
+      text: box.text,
+      chart: box.chart,
+      height: box.height,
+      width: box.width
+    };
+    this.slide.boxes.push(box);
+  }
 
-    if(type === 'text') {
-      const conf: NgGridItemConfig = this._generateDefaultItemConfig(50, 50);
-      this.slide.boxes.push({ config : conf, text: objectToAdd, chart: null, height : 30, width : 30 });
-    } else if (type === 'chart'){
-      const conf: NgGridItemConfig = this._generateDefaultItemConfig(50, 50);
-      this.slide.boxes.push({ config : conf, text: null, chart: objectToAdd, height : 30, width : 30});
+  addBox(objectToAdd, type) {
+    if (type === 'text') {
+      const conf: NgGridItemConfig = this._generateItemConfig(1, 1, 30, 30);
+      this.slide.boxes.push({config: conf, text: objectToAdd, chart: null, height: 30, width: 30});
+    } else if (type === 'chart') {
+      const conf: NgGridItemConfig = this._generateItemConfig(1, 1, 20, 20);
+      this.slide.boxes.push({config: conf, text: null, chart: objectToAdd, height: 20, width: 30});
     }
   }
+
   addText() {
-    const dialog = this.dialog.open(TextEditorComponent, {  height: '60%', width : '90%' });
-      dialog.afterClosed().subscribe(result => {
-        if (result) {
-          console.log('The dialog was closed');
-          this.addBox(result, 'text');
-        }
-      });
+    const dialog = this.dialog.open(TextEditorComponent, {height: '60%', width: '90%'});
+    dialog.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('The dialog was closed');
+        this.addBox(result, 'text');
+      }
+    });
   }
+
   removeBox(index: number) {
     if (this.slide.boxes[index]) {
       this.slide.boxes.splice(index, 1);
     }
   }
+
   editBox(index: number) {
     if (this.slide.boxes[index].text) {
-      const dialog = this.dialog.open(TextEditorComponent, {  height: '60%', width : '95%'});
+      const dialog = this.dialog.open(TextEditorComponent, {height: '60%', width: '95%'});
       dialog.componentInstance.text = this.slide.boxes[index].text;
       dialog.afterClosed().subscribe(result => {
         if (result) {
-          console.log('The dialog was closed', result);
           this.slide.boxes[index].text = result;
         }
       });
     }
     if (this.slide.boxes[index].chart) {
-      const dialog = this.dialog.open(ChartBuilderComponent, {  height: '95%', width : '95%' });
+      const dialog = this.dialog.open(ChartBuilderComponent, {height: '95%', width: '95%'});
       dialog.componentInstance.chartType = this.slide.boxes[index].chart.chartType;
       dialog.componentInstance.chartOptions = this.slide.boxes[index].chart.chartOptions;
       dialog.componentInstance.data = this.slide.boxes[index].chart.data;
       dialog.afterClosed().subscribe(result => {
         if (result) {
-          console.log('The dialog was closed', result);
           this.slide.boxes[index].chart = result;
         }
       });
     }
   }
-  updateItem(index: number, event: NgGridItemEvent): void {
-    // Do something here
-  }
-
-  onDrag(index: number, event: NgGridItemEvent): void {
-    // Do something here
-  }
 
   onResize(index: number, event: NgGridItemEvent): void {
-    this.slide.boxes[index].width = event.width +45;
+    this.slide.boxes[index].width = event.width ;
     this.slide.boxes[index].height = event.height;
-    if(this.slide.boxes[index].text) {
+    if (this.slide.boxes[index].text) {
       this.textContainer.map((e, i) => {
         if (i === index && e.nativeElement.children[0]) {
           e.nativeElement.children[0].firstChild.width = event.width;
@@ -123,18 +128,19 @@ export class SlidesDragDropComponent {
         }
       });
     }
+  }
 
-  }
-  getBoxes(boxes) {
-    console.log(boxes);
-  }
   confirmSlide() {
     this.dialogRef.close(this.slide);
   }
-  private _generateDefaultItemConfig(sizex, sizey): NgGridItemConfig {
-    return { 'dragHandle': '.handle', 'col': 1, 'row': 1, 'sizex': sizex , 'sizey': sizey};
+
+  private _generateItemConfig(col, row, sizex, sizey): NgGridItemConfig {
+    return {'dragHandle': '.handle', 'col': col, 'row': row, 'sizex': sizex, 'sizey': sizey};
   }
-  onItemChange($event) {
-    console.log("item change", $event);
+
+  onDragStop(index, item , box) {
+    if (item.col > 45) {
+      this.refreshBox(index, box);
+    }
   }
 }
