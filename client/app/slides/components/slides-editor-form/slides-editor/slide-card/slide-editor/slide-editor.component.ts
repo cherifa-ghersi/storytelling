@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation, ViewChildren, ElementRef, QueryList} from '@angular/core';
+import {Component, ViewEncapsulation, ViewChildren, ViewChild, ElementRef, QueryList} from '@angular/core';
 import {NgGrid, NgGridItem, NgGridConfig, NgGridItemConfig, NgGridItemEvent} from 'angular2-grid';
 import { Slide } from '../../../../../models/slide';
 import { MdDialog, MdDialogRef } from '@angular/material';
@@ -19,6 +19,7 @@ export class SlideEditorComponent {
   public slideIndex: number;  // slide index
   private curNum;
   @ViewChildren('textContainer') textContainer: QueryList<ElementRef>;
+  @ViewChild('dragDropElem') dragDropElem : ElementRef;
   private gridConfig: NgGridConfig = <NgGridConfig>{
     'margins': [5],
     'draggable': true,
@@ -46,7 +47,7 @@ export class SlideEditorComponent {
   openChartBuilder() {
     const dialog = this.dialog.open(ChartsBuilderComponent, {height: '95%', width: '90%'});
     dialog.afterClosed().subscribe(result => {
-      if (result) {
+      if (result !== 'CANCEL') {
         console.log('The dialog was closed');
         this.addBox(result, 'chart');
       }
@@ -59,7 +60,7 @@ export class SlideEditorComponent {
   refreshBox(index, box) {
     this.removeBox(index);
     box = {
-      config : this._generateItemConfig(45, box.config.row, box.config.sizex, box.config.sizey),
+      config : this._generateItemConfig( box.config.col, box.config.row, box.config.sizex, box.config.sizey),
       text: box.text,
       chart: box.chart,
       height: box.height,
@@ -139,7 +140,7 @@ export class SlideEditorComponent {
   }
 
   onDragStop(index, item , box) {
-    if (item.col > 45) {
+    if (item.width + item.left > this.dragDropElem.nativeElement.offsetWidth) {
       this.refreshBox(index, box);
     }
   }
