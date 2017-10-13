@@ -22,6 +22,7 @@ import { HotTableModule } from 'ng2-handsontable';
 import {SlidesSearchComponent} from './components/slides-list/slides-search/slides-search.component';
 // SLIDES COMPONENTS
 import { SlidesViewComponent,
+    TitleSlideComponent,
     SlidesEditorFormComponent,
     SlideCardComponent
 } from '.';
@@ -154,7 +155,8 @@ import { NgGridModule} from 'angular2-grid';
         SlideEditorComponent,
         ChartsBuilderComponent,
         TextEditorComponent,
-        GraphComponent
+        GraphComponent,
+        TitleSlideComponent
     ],
     exports: [
       SlidesCardComponent,

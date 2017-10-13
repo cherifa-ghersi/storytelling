@@ -7,7 +7,13 @@ export class Slide {
         chart: any,
         width: number,
         height: number
-    }];
+    }]= [{config : {},
+        text: '',
+        chart: '',
+        width: 0,
+        height: 0}
+    ];
+    title: string = '';
     index: number = 1;
     isValid: boolean = false;
     constructor(index?: number) {

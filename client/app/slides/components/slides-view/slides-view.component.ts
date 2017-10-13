@@ -101,18 +101,10 @@ export class SlidesViewComponent implements OnInit {
         /* generate and initialize slides*/
         this.slidesService.getSlides(id).subscribe(
             slide => {
+                console.log(slide);
                 this.slides = slide.slides;
                 this.slideNum = this.slides.length;
                 this.slideTitle = slide.slidesSetting.title;
-                this.slides.forEach(s => {
-                    if (s.text.length) {
-                        s.text = this.sanitizer.bypassSecurityTrustHtml(s.text) as string;
-                    }
-                    if (s.slideImage) {
-                        this.imagesService.getImage(s.slideImage).subscribe(img => s.slideImage = img
-                        )
-                    }
-                })
             },
             error => {
                 this.notifBarService.showNotif("fail to load slides, error is " + error);
