@@ -62,7 +62,7 @@ import { AreaChartComponent } from '../charts/ngx-charts/area-chart';
 import { ImageUploadComponent } from './components/slides-editor-form/slides-editor/slide-card/slide-editor/image-upload/image-upload.component';
 
 import { SlidesSettingComponent } from './components/slides-editor-form/slides-editor/slides-setting/slides-setting.component';
-import { ChartsBuilderComponent, CodeEditorComponent, DataTableComponent } from './components/slides-editor-form/slides-editor/slide-card/slide-editor/charts-builder';
+import { CodeEditorComponent, DataTableComponent } from './components/slides-editor-form/slides-editor/slide-card/slide-editor/charts-builder';
 import { SlidesEditorComponent } from './components/slides-editor-form/slides-editor/slides-editor.component';
 import { SlidesListComponent } from './components/slides-list/slides-list.component';
 import { SlidesCardComponent } from './components/slides-list/slides-card/slides-card.component';
@@ -70,8 +70,7 @@ import { DeleteDialogComponent } from './components/slides-list/slides-card/dele
 import { ToggleFullscreenDirective } from './components/slides-view/toggle-fullscreen.directive';
 
 import { ValidateOnBlurDirective } from './components/slides-editor-form/slides-editor/slides-setting/validate-on-blur.directive';
-import { SlideEditorComponent } from './components/slides-editor-form/slides-editor/slide-card/slide-editor/slide-editor.component';
-import { SlidesDragDropComponent, ChartBuilderComponent, TextEditorComponent, GraphComponent } from '.';
+import { SlideEditorComponent, ChartsBuilderComponent, TextEditorComponent, GraphComponent } from '.';
 import { NgGridModule} from 'angular2-grid';
 
 @NgModule({
@@ -114,7 +113,7 @@ import { NgGridModule} from 'angular2-grid';
         SunburstChartComponent,
         AreaChartComponent,
         SlideEditorComponent,
-        ChartBuilderComponent,
+        ChartsBuilderComponent,
         TextEditorComponent
     ],
 
@@ -131,7 +130,6 @@ import { NgGridModule} from 'angular2-grid';
         SlidesSettingComponent,
         CodeEditorComponent,
         DataTableComponent,
-        ChartsBuilderComponent,
         SlidesEditorComponent,
         SlidesListComponent,
         GaugeChartComponent,
@@ -154,8 +152,7 @@ import { NgGridModule} from 'angular2-grid';
         ToggleFullscreenDirective,
         ValidateOnBlurDirective,
         SlideEditorComponent,
-        SlidesDragDropComponent,
-        ChartBuilderComponent,
+        ChartsBuilderComponent,
         TextEditorComponent,
         GraphComponent
     ],

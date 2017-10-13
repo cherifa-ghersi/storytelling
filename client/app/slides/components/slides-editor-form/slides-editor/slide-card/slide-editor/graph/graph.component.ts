@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterContentInit, OnChanges, DoCheck , ElementRef, Input, ViewChild, ComponentFactoryResolver, ViewContainerRef, ComponentRef } from '@angular/core';
-import { Chart } from '../../../../charts/chart.class';
-import { ChartsService } from '../../../services';
+import { Chart } from '../../../../../../../charts/chart.class';
+import { ChartsService } from '../../../../../../services';
 
 @Component({
   selector: 'app-graph',
