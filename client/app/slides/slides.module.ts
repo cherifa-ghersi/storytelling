@@ -71,7 +71,7 @@ import { DeleteDialogComponent } from './components/slides-list/slides-card/dele
 import { ToggleFullscreenDirective } from './components/slides-view/toggle-fullscreen.directive';
 
 import { ValidateOnBlurDirective } from './components/slides-editor-form/slides-editor/slides-setting/validate-on-blur.directive';
-import { SlideEditorComponent, ChartsBuilderComponent, TextEditorComponent, GraphComponent } from '.';
+import { SlideEditorComponent, ChartsBuilderComponent, TextEditorComponent, GraphComponent, TextComponent } from '.';
 import { NgGridModule} from 'angular2-grid';
 
 @NgModule({
@@ -156,7 +156,8 @@ import { NgGridModule} from 'angular2-grid';
         ChartsBuilderComponent,
         TextEditorComponent,
         GraphComponent,
-        TitleSlideComponent
+        TitleSlideComponent,
+        TextComponent
     ],
     exports: [
       SlidesCardComponent,

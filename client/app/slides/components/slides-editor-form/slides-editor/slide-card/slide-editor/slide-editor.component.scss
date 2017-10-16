@@ -83,10 +83,6 @@ body {
   justify-content: center;
 }
 
-img.fr-fic.fr-dib {
-  height: 100%;
-  width: 100%;
-}
 .sidenav {
   @include Nav-theme($theme);
   height: 100%;

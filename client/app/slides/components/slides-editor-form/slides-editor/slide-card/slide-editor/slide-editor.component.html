@@ -51,7 +51,7 @@
           <i class="fa fa-trash"></i>
         </a>
       </div>
-      <div *ngIf="box.text"  #textContainer [innerHTML]="box.text"></div>
+      <app-text *ngIf="box.text" class="text-box" [currentIndex]="i" [boxIndexToResize]="boxIndexToResize" [event]="event" [text]="box.text"></app-text>
       <app-graph [width]="box.width" [height]="box.height" *ngIf="box.chart" [chart]="box.chart"></app-graph>
       </div>
     </div>

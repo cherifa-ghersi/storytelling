@@ -17,8 +17,8 @@ import {Chart} from '../../../../../../charts';
 export class SlideEditorComponent {
   public slide: Slide;
   public slideIndex: number;  // slide index
-  private curNum;
-  @ViewChildren('textContainer') textContainer: QueryList<ElementRef>;
+  boxIndexToResize = -1;
+  event: NgGridItemEvent;
   @ViewChild('dragDropElem') dragDropElem : ElementRef;
   private gridConfig: NgGridConfig = <NgGridConfig>{
     'margins': [5],
@@ -121,17 +121,11 @@ export class SlideEditorComponent {
   onResize(index: number, event: NgGridItemEvent): void {
     this.slide.boxes[index].width = event.width ;
     this.slide.boxes[index].height = event.height;
-    if (this.slide.boxes[index].text) {
-      this.textContainer.map((e, i) => {
-        if (i === index && e.nativeElement.children[0]) {
-          e.nativeElement.children[0].firstChild.width = event.width;
-          e.nativeElement.children[0].firstChild.height = event.height;
-        }
-      });
-    }
+    this.event = event;
+    this.boxIndexToResize = index;
   }
 
-  confirmSlide() {
+  confirmSlide(){
     this.dialogRef.close(this.slide);
   }
 
@@ -140,7 +134,7 @@ export class SlideEditorComponent {
   }
 
   onDragStop(index, item , box) {
-    if (item.width + item.left > this.dragDropElem.nativeElement.offsetWidth) {
+    if (item.width + item.left + 60 > this.dragDropElem.nativeElement.offsetWidth) {
       this.refreshBox(index, box);
     }
   }
