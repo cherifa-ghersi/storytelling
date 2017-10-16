@@ -100,7 +100,7 @@ export class SlideEditorComponent {
       const dialog = this.dialog.open(TextEditorComponent, {height: '60%', width: '95%'});
       dialog.componentInstance.text = this.slide.boxes[index].text;
       dialog.afterClosed().subscribe(result => {
-        if (result) {
+        if (result !== 'CANCEL') {
           this.slide.boxes[index].text = result;
         }
       });
@@ -108,10 +108,11 @@ export class SlideEditorComponent {
     if (this.slide.boxes[index].chart) {
       const dialog = this.dialog.open(ChartsBuilderComponent, {height: '95%', width: '95%'});
       dialog.componentInstance.chartType = this.slide.boxes[index].chart.chartType;
-      dialog.componentInstance.chartOptions = this.slide.boxes[index].chart.chartOptions;
-      dialog.componentInstance.data = this.slide.boxes[index].chart.data;
+      dialog.componentInstance.inputOptions = this.slide.boxes[index].chart.chartOptions;
+      dialog.componentInstance.inputData = this.slide.boxes[index].chart.data;
       dialog.afterClosed().subscribe(result => {
-        if (result) {
+        console.log(result);
+        if (result !== 'CANCEL') {
           this.slide.boxes[index].chart = result;
         }
       });
