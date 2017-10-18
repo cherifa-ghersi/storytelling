@@ -34,8 +34,6 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
   changePasword(newPassword) {
-    console.log('ezgez', newPassword);
-
     this.usersService.resetPassword(newPassword, this.token).subscribe(model => {
       this.notifBarService.showNotif('Your new password has been saved.');
       this.actions.loginUser({password : newPassword.newPassword , 'usernameOrEmail': model.user.username });
